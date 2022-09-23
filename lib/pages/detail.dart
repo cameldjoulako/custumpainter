@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:provider/provider.dart';
 import 'package:custumpainter/widgets/button_temperature_type.dart';
 import 'package:custumpainter/widgets/on_off_widget.dart';
 import 'package:custumpainter/widgets/semi_circle_widget.dart';
@@ -8,12 +7,18 @@ import 'package:custumpainter/widgets/speed_widget.dart';
 import 'package:custumpainter/widgets/temperature_widget.dart';
 import 'package:custumpainter/view_model.dart';
 
-class DetailScreen extends StatelessWidget {
+class DetailScreen extends StatefulWidget {
   const DetailScreen({super.key});
 
   @override
+  State<DetailScreen> createState() => _DetailScreenState();
+}
+
+class _DetailScreenState extends State<DetailScreen> {
+  @override
   Widget build(BuildContext context) {
-    final provider = Provider.of<ViewModel>(context);
+    final myList = ViewModel().myList;
+    final vmodel = ViewModel();
 
     return Scaffold(
       body: SingleChildScrollView(
@@ -23,7 +28,7 @@ class DetailScreen extends StatelessWidget {
             gradient: LinearGradient(
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
-              colors: getBackColor(provider.myList[1].value)!,
+              colors: getBackColor(myList[1].value)!,
             ),
           ),
           child: SafeArea(
@@ -39,8 +44,9 @@ class DetailScreen extends StatelessWidget {
                       splashColor: Colors.transparent,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,
+                        // ignore: prefer_const_literals_to_create_immutables
                         children: [
-                          Icon(
+                          const Icon(
                             Icons.arrow_back,
                             color: Colors.black,
                           )
@@ -51,9 +57,9 @@ class DetailScreen extends StatelessWidget {
                       },
                     ),
                     Text(
-                      provider.myList[1].name,
-                      style:
-                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                      myList[1].name,
+                      style: const TextStyle(
+                          fontSize: 18, fontWeight: FontWeight.bold),
                     ),
                     Opacity(
                       opacity: 0,
@@ -62,8 +68,9 @@ class DetailScreen extends StatelessWidget {
                         splashColor: Colors.transparent,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.start,
+                          // ignore: prefer_const_literals_to_create_immutables
                           children: [
-                            Icon(
+                            const Icon(
                               Icons.arrow_back,
                               color: Colors.black,
                             )
@@ -78,12 +85,13 @@ class DetailScreen extends StatelessWidget {
                 ),
                 Expanded(
                   child: Container(
-                      padding: EdgeInsets.all(24),
+                      padding: const EdgeInsets.all(24),
                       child: Column(
                         children: [
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
+                              // ignore: prefer_const_constructors
                               ButtonTemperatureType(
                                 iconData: MdiIcons.clockOutline,
                                 status: false,
@@ -121,11 +129,9 @@ class DetailScreen extends StatelessWidget {
                                     SemiCircleWidget(
                                       diameter: 200,
                                       sweepAngle:
-                                          ((provider.myList[1].value - 15) *
-                                                  12.0)
+                                          ((myList[1].value - 15) * 12.0)
                                               .clamp(0.0, 180.0),
-                                      color: getSliderColor(
-                                          provider.myList[1].value),
+                                      color: getSliderColor(myList[1].value),
                                     ),
                                     Container(
                                       width: 200,
@@ -145,7 +151,7 @@ class DetailScreen extends StatelessWidget {
                                           ]),
                                     ),
                                     Text(
-                                      '${convertToInt(provider.myList[1].value)}°C',
+                                      '${convertToInt(myList[1].value)}°C',
                                       style: TextStyle(
                                           fontSize: 60,
                                           fontWeight: FontWeight.w600),
@@ -166,26 +172,32 @@ class DetailScreen extends StatelessWidget {
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     SpeedWidget(
-                                      temp: provider.myList[1],
+                                      temp: myList[1],
                                       onPressed: (value) {
-                                        provider.changeSpeed(value);
+                                        setState(() {
+                                          vmodel.changeSpeed(value);
+                                        });
                                       },
                                     ),
                                     OnOffWidget(
-                                      temperature: provider.myList[1],
+                                      temperature: myList[1],
                                       onChanged: (value) {
-                                        provider.changeStatus(value);
+                                        setState(() {
+                                          vmodel.changeStatus(value);
+                                        });
                                       },
                                     ),
                                   ],
                                 ),
                                 SizedBox(
-                                  height: 20,
+                                  height: 8,
                                 ),
                                 TemperatureWidget(
-                                  temperature: provider.myList[1],
+                                  temperature: myList[1],
                                   onChanged: (value) {
-                                    provider.changeValue(value);
+                                    setState(() {
+                                      vmodel.changeValue(value);
+                                    });
                                   },
                                 ),
                               ],

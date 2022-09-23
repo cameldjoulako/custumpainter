@@ -33,7 +33,7 @@ class SpeedWidget extends StatelessWidget {
             ),
           ),
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            //mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               RawMaterialButton(
                 onPressed: () {

@@ -24,7 +24,7 @@ class _TemperatureWidgetState extends State<TemperatureWidget> {
         borderRadius: BorderRadius.circular(20.0),
         color: getBackColor(widget.temperature!.value!),
       ),
-      height: 100,
+      height: 60,
       width: MediaQuery.of(context).size.width,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -38,7 +38,7 @@ class _TemperatureWidgetState extends State<TemperatureWidget> {
             ),
           ),
           Row(
-            //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
                 '16°C',
