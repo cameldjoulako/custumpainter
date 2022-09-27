@@ -1,10 +1,10 @@
 import 'package:custumpainter/models/item.dart';
 
-class Temperature extends Item {
+class Bonheur extends Item {
   int speed;
   double? value;
 
-  Temperature({
+  Bonheur({
     name,
     iconOn,
     iconOff,

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class ButtonTemperatureType extends StatelessWidget {
-  const ButtonTemperatureType({
+class ButtonBonheurType extends StatelessWidget {
+  const ButtonBonheurType({
     Key? key,
     @required this.iconData,
     @required this.status,
@@ -16,7 +16,9 @@ class ButtonTemperatureType extends StatelessWidget {
       width: 75,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20.0),
-        color: status! ? Colors.white.withOpacity(0.8) : Colors.white.withOpacity(0.5),
+        color: status!
+            ? Colors.white.withOpacity(0.8)
+            : Colors.white.withOpacity(0.5),
       ),
       child: Icon(
         iconData,

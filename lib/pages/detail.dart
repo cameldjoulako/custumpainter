@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:custumpainter/widgets/button_temperature_type.dart';
-import 'package:custumpainter/widgets/on_off_widget.dart';
 import 'package:custumpainter/widgets/semi_circle_widget.dart';
-import 'package:custumpainter/widgets/speed_widget.dart';
-import 'package:custumpainter/widgets/temperature_widget.dart';
-import 'package:custumpainter/view_model.dart';
+import 'package:custumpainter/widgets/bonheur_widget.dart';
+import 'package:custumpainter/models/view_model.dart';
 
 class DetailScreen extends StatefulWidget {
   const DetailScreen({super.key});
@@ -47,19 +43,17 @@ class _DetailScreenState extends State<DetailScreen> {
                         // ignore: prefer_const_literals_to_create_immutables
                         children: [
                           const Icon(
-                            Icons.arrow_back,
+                            Icons.person,
                             color: Colors.black,
                           )
                         ],
                       ),
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                      },
+                      onPressed: () {},
                     ),
-                    Text(
-                      myList[1].name,
-                      style: const TextStyle(
-                          fontSize: 18, fontWeight: FontWeight.bold),
+                    const Text(
+                      "Niveau de bonheur",
+                      style:
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                     ),
                     Opacity(
                       opacity: 0,
@@ -88,31 +82,9 @@ class _DetailScreenState extends State<DetailScreen> {
                       padding: const EdgeInsets.all(24),
                       child: Column(
                         children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              // ignore: prefer_const_constructors
-                              ButtonTemperatureType(
-                                iconData: MdiIcons.clockOutline,
-                                status: false,
-                              ),
-                              ButtonTemperatureType(
-                                iconData: MdiIcons.snowflake,
-                                status: true,
-                              ),
-                              ButtonTemperatureType(
-                                iconData: MdiIcons.weatherSunny,
-                                status: false,
-                              ),
-                              ButtonTemperatureType(
-                                iconData: MdiIcons.waterOutline,
-                                status: false,
-                              )
-                            ],
-                          ),
                           Expanded(
                             flex: 3,
-                            child: Container(
+                            child: SizedBox(
                               width: MediaQuery.of(context).size.width,
                               child: Center(
                                 child: Stack(
@@ -151,7 +123,7 @@ class _DetailScreenState extends State<DetailScreen> {
                                           ]),
                                     ),
                                     Text(
-                                      '${convertToInt(myList[1].value)}°C',
+                                      '${convertToInt(myList[1].value)}',
                                       style: TextStyle(
                                           fontSize: 60,
                                           fontWeight: FontWeight.w600),
@@ -167,33 +139,8 @@ class _DetailScreenState extends State<DetailScreen> {
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    SpeedWidget(
-                                      temp: myList[1],
-                                      onPressed: (value) {
-                                        setState(() {
-                                          vmodel.changeSpeed(value);
-                                        });
-                                      },
-                                    ),
-                                    OnOffWidget(
-                                      temperature: myList[1],
-                                      onChanged: (value) {
-                                        setState(() {
-                                          vmodel.changeStatus(value);
-                                        });
-                                      },
-                                    ),
-                                  ],
-                                ),
-                                SizedBox(
-                                  height: 8,
-                                ),
-                                TemperatureWidget(
-                                  temperature: myList[1],
+                                BonheurWidget(
+                                  bonheur: myList[1],
                                   onChanged: (value) {
                                     setState(() {
                                       vmodel.changeValue(value);
@@ -221,7 +168,7 @@ class _DetailScreenState extends State<DetailScreen> {
   List<Color>? getBackColor(double value) {
     int newValue = value.toInt();
     if (newValue >= 16 && newValue < 19) {
-      return gradientGreen;
+      return gradientRed;
     } else if (newValue >= 19 && newValue < 22) {
       return gradientTeal;
     } else if (newValue >= 22 && newValue < 25) {
@@ -229,15 +176,16 @@ class _DetailScreenState extends State<DetailScreen> {
     } else if (newValue >= 25 && newValue < 28) {
       return gradientViolet;
     } else if (newValue >= 28) {
-      return gradientRed;
+      return gradientGreen;
     }
+    return null;
   }
 
   Color? getSliderColor(double value) {
     int newValue = value.toInt();
     Color? newColor;
     if (newValue >= 16 && newValue < 19) {
-      newColor = colorGreen;
+      newColor = colorRed;
     } else if (newValue >= 19 && newValue < 22) {
       newColor = colorTeal;
     } else if (newValue >= 22 && newValue < 25) {
@@ -245,7 +193,7 @@ class _DetailScreenState extends State<DetailScreen> {
     } else if (newValue >= 25 && newValue < 28) {
       newColor = colorViolet;
     } else if (newValue >= 28) {
-      newColor = colorRed;
+      newColor = colorGreen;
     }
 
     return newColor!;
