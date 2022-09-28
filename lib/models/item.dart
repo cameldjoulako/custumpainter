@@ -28,15 +28,15 @@ List<dynamic> itemList = [
     iconOn: MdiIcons.lightbulbOnOutline,
     iconOff: MdiIcons.lightbulbOffOutline,
     active: false,
-    color: Color(0xFFFD443C),
+    color: const Color(0xFFFD443C),
     type: ItemType.light,
   ),
   Bonheur(
-    name: 'Niveau de bonheur',
+    name: 'Niveau de bonheur 2',
     iconOn: MdiIcons.airConditioner,
     iconOff: MdiIcons.airConditioner,
     active: false,
-    color: Color(0xFF5D24FB),
+    color: const Color(0xFF5D24FB),
     type: ItemType.bonheur,
   ),
 ];

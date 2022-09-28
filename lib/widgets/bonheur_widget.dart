@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
 import 'package:custumpainter/models/bonheur.dart';
 import 'package:custumpainter/pages/detail.dart';
+import 'package:flutter/material.dart';
 
 class BonheurWidget extends StatefulWidget {
   const BonheurWidget({
@@ -31,7 +31,7 @@ class _BonheurWidgetState extends State<BonheurWidget> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           const Text(
-            'Niveau',
+            'Noter votre journée',
             style: TextStyle(
               color: Colors.white,
               fontWeight: FontWeight.bold,

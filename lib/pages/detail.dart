@@ -117,14 +117,17 @@ class _DetailScreenState extends State<DetailScreen> {
                                                   Colors.grey.withOpacity(0.3),
                                               spreadRadius: 5,
                                               blurRadius: 7,
-                                              offset: Offset(0,
+                                              offset: const Offset(0,
                                                   3), // changes position of shadow
                                             ),
                                           ]),
                                     ),
                                     Text(
-                                      '${convertToInt(myList[1].value)}',
-                                      style: TextStyle(
+                                      //'${(myList[1].emojis)}',
+                                      '${getEmojis(myList[1].value)}',
+                                      //'${convertToInt(myList[1].value)}',
+                                      //'\u2764',
+                                      style: const TextStyle(
                                           fontSize: 60,
                                           fontWeight: FontWeight.w600),
                                     )
@@ -182,6 +185,7 @@ class _DetailScreenState extends State<DetailScreen> {
   }
 
   Color? getSliderColor(double value) {
+    //print(value);
     int newValue = value.toInt();
     Color? newColor;
     if (newValue >= 16 && newValue < 19) {
@@ -198,41 +202,60 @@ class _DetailScreenState extends State<DetailScreen> {
 
     return newColor!;
   }
+
+  String? getEmojis(double value) {
+    //print(value);
+    int newValue = value.toInt();
+    String? newEmojis;
+    if (newValue >= 16 && newValue < 19) {
+      newEmojis = '😉';
+    } else if (newValue >= 19 && newValue < 22) {
+      newEmojis = '🙃';
+    } else if (newValue >= 22 && newValue < 25) {
+      newEmojis = '😌';
+    } else if (newValue >= 25 && newValue < 28) {
+      newEmojis = '😇';
+    } else if (newValue >= 28) {
+      newEmojis = '😊';
+    }
+
+    return newEmojis!;
+  }
 }
 
 final gradientRed = [
-  Color(0xFFff5252).withOpacity(0.2),
-  Color(0xFFff1744).withOpacity(0.4),
-  Color(0xFFff1744).withOpacity(0.4),
-  Color(0xFFd50000).withOpacity(0.6),
+  const Color(0xFFff5252).withOpacity(0.2),
+  const Color(0xFFff1744).withOpacity(0.4),
+  const Color(0xFFff1744).withOpacity(0.4),
+  const Color(0xFFd50000).withOpacity(0.6),
 ];
 
 final gradientViolet = [
-  Color(0xFFE9E1FF),
-  Color(0xFFD6C9FE),
-  Color(0xFFD6C9FE),
-  Color(0xFF784CFC).withOpacity(0.6),
+  const Color(0xFFE9E1FF),
+  const Color(0xFFD6C9FE),
+  const Color(0xFFD6C9FE),
+  const Color(0xFF784CFC).withOpacity(0.6),
 ];
 
 final gradientBlue = [
-  Color(0xFF448aff).withOpacity(0.2),
-  Color(0xFF2979ff).withOpacity(0.4),
-  Color(0xFF2979ff).withOpacity(0.4),
-  Color(0xFF2962ff).withOpacity(0.6),
+  const Color(0xFF448aff).withOpacity(0.2),
+  const Color(0xFF2979ff).withOpacity(0.4),
+  const Color(0xFF2979ff).withOpacity(0.4),
+  const Color(0xFF2962ff).withOpacity(0.6),
 ];
 
 final gradientTeal = [
-  Color(0xFF64ffda).withOpacity(0.2),
-  Color(0xFF1de9b6).withOpacity(0.4),
-  Color(0xFF1de9b6).withOpacity(0.4),
-  Color(0xFF00bfa5).withOpacity(0.6),
+  const Color(0xFF64ffda).withOpacity(0.2),
+  const Color(0xFF1de9b6).withOpacity(0.4),
+  const Color(0xFF1de9b6).withOpacity(0.4),
+  const Color(0xFF00bfa5).withOpacity(0.6),
 ];
 
 final gradientGreen = [
-  Color(0xFF69f0ae).withOpacity(0.2),
-  Color(0xFF00e676).withOpacity(0.4),
-  Color(0xFF00e676).withOpacity(0.4),
-  Color(0xFF00c853).withOpacity(0.6),
+  const Color(0xFF69f0ae).withOpacity(0.2),
+  const Color(0xFF00e676).withOpacity(0.4),
+  const Color(0xFF00e676).withOpacity(0.4),
+  const Color(0xFF00c853).withOpacity(0.6),
 ];
 
 const colorGreen = Color(0xFF00c853);

@@ -8,4 +8,9 @@ class ViewModel extends ChangeNotifier {
     myList[1].value = value;
     notifyListeners();
   }
+
+  changeEmojis(String value) {
+    myList[1].emojis = value;
+    notifyListeners();
+  }
 }
