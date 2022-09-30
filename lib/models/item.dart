@@ -20,7 +20,7 @@ List<dynamic> itemList = [
     color: const Color(0xFFFD443C),
   ),
   Bonheur(
-    name: 'Niveau de détresse',
+    name: 'Niveau de bonheur',
     active: false,
     color: const Color(0xFF5D24FB),
   ),
