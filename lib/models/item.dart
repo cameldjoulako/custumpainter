@@ -20,7 +20,7 @@ class Item {
   ItemType? type;
 }
 
-enum ItemType { light, bonheur, tv, sound }
+enum ItemType { fache, pleure, content, joie }
 
 List<dynamic> itemList = [
   Item(
@@ -29,7 +29,7 @@ List<dynamic> itemList = [
     iconOff: MdiIcons.lightbulbOffOutline,
     active: false,
     color: const Color(0xFFFD443C),
-    type: ItemType.light,
+    type: ItemType.content,
   ),
   Bonheur(
     name: 'Niveau de bonheur 2',
@@ -37,6 +37,6 @@ List<dynamic> itemList = [
     iconOff: MdiIcons.airConditioner,
     active: false,
     color: const Color(0xFF5D24FB),
-    type: ItemType.bonheur,
+    type: ItemType.pleure,
   ),
 ];
